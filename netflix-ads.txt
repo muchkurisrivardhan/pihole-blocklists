@@ -1,22 +1,47 @@
-# Netflix ads blocklist (Pi-hole adlist format: one domain per line)
-# Add the RAW url of this file under Pi-hole > Adlists.
+# Netflix ads blocklist — AGGRESSIVE (Pi-hole adlist: one domain per line)
+# Raw URL goes under Pi-hole > Adlists.
 #
-# HONEST NOTE: Netflix's ad-supported tier serves ads through Microsoft (Xandr).
-# Blocking these ad/measurement endpoints may trip ad-tier "verification" and in
-# some cases pause playback. Entries below are Netflix telemetry + the ad/
-# measurement partners used by the ad tier. Core streaming domains are NOT here.
+# HARD TRUTH: ads on the Netflix ad tier come from PARTNERS, not netflix.com.
+# You cannot block ads on netflix.com without killing streaming. This file
+# blocks the ad/measurement partners + Netflix telemetry ONLY. Core streaming
+# domains (nflxvideo.net, nflxso.net, nrdp.*, api-global.netflix.com, oca.*)
+# are deliberately absent — see caution-breaks-streaming.txt.
+#
+# Expect: ads may PAUSE/ERROR instead of skipping on the ad tier. The only true
+# fix is the ad-free plan.
 
-# Netflix telemetry / tracking
+# --- Netflix's own telemetry / event logging (safe to block, not core) ---
 ichnaea.netflix.com
-customerevents.netflix.com
 ichnaea-web.netflix.com
+customerevents.netflix.com
 
-# Ad-tier ad & measurement partners (Microsoft/Xandr, IAS, DoubleVerify, Nielsen)
+# --- Microsoft Advertising / Xandr (Netflix's primary ad platform) ---
 ib.adnxs.com
 secure.adnxs.com
-pixel.adsafeprotected.com
-static.adsafeprotected.com
-cdn.doubleverify.com
-tps.doubleverify.com
+ib.adnxs-simple.com
+
+# --- The Trade Desk ---
+insight.adsrvr.org
+js.adsrvr.org
+match.adsrvr.org
+
+# --- Innovid (video ad serving / VAST) ---
+static.innovid.com
+dts.innovid.com
+rtr.innovid.com
+
+# --- Nielsen (measurement) ---
 secure-us.imrworldwide.com
 secure-gl.imrworldwide.com
+
+# --- DoubleVerify (verification) ---
+cdn.doubleverify.com
+tps.doubleverify.com
+
+# --- Integral Ad Science (IAS) ---
+pixel.adsafeprotected.com
+static.adsafeprotected.com
+
+# --- Comscore + Moat (Oracle) measurement ---
+sb.scorecardresearch.com
+z.moatads.com
