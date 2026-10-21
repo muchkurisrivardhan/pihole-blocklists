@@ -1,0 +1,34 @@
+# QUARANTINE — do NOT add these to Pi-hole unless you know what you're doing.
+# These came from your deny-list paste but they are CORE service domains, not
+# ad domains. Blocking them breaks the app instead of blocking ads.
+#
+# If you added any of these via "Added from Query Log", REMOVE them from
+# Pi-hole > Domains to fix broken YouTube/Netflix.
+
+# YouTube video CDN (also rotate every session — pinning exact names is useless)
+rr6---sn-bvvbaxivnuxqjvhj5nu-vgqz.googlevideo.com
+rr9---sn-bvvbaxivnuxqjvhj5nu-vgq6.googlevideo.com
+rr1---sn-bvvbaxivnuxqjvhj5nu-vgql.googlevideo.com
+rr3---sn-bvvbaxivnuxqjvhj5nu-vgqs.googlevideo.com
+
+# YouTube thumbnails / channel avatars (blocking = broken images)
+yt3.ggpht.com
+
+# Netflix core: API, control plane (nrdp), app CDN, video CDN — Netflix won't work
+api-global.netflix.com
+occ-0-650-7.1.nflxso.net
+nrdp.nccp.netflix.com
+nrdp.prod.ftl.netflix.com
+nrdp25.prod.ftl.netflix.com
+nrdp.prod.cloud.netflix.com
+nrdp.push.prod.netflix.com
+ipv6-c721-ord001-ix.1.oca.nflxvideo.net
+
+# Reverse-DNS (PTR) lookups for local 10.0.0.x IPs — pointless, slows LAN lookups
+1.0.0.10.in-addr.arpa
+3.0.0.10.in-addr.arpa
+82.0.0.10.in-addr.arpa
+242.0.0.10.in-addr.arpa
+
+# Captive-portal check (your router/AP uses this; blocking can cause "no internet")
+avsxappcaptiveportal.com

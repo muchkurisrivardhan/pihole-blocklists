@@ -1,17 +1,67 @@
-# Pi-hole REGEX filters (NOT an adlist).
-# Paste these under Group Management > Domains > Add a new regex filter.
-# One per line. Test before trusting — regex blocks are broad by design.
+# Pi-hole REGEX filters (NOT an adlist — can't be pulled from a URL).
+# Paste under Group Management > Domains > Add a new regex filter. One per line.
+# Deduped: each domain appears once as (\.|^)domain$  (matches domain + all subdomains).
 
-# Block common ad/tracking subdomain prefixes across all domains
-(^|\.)ads?[0-9]*\.
-(^|\.)adserver\.
-(^|\.)adservice\.
-(^|\.)advert(s|ising)?\.
-(^|\.)analytics?\.
-(^|\.)telemetry\.
-(^|\.)tracking?\.
-(^|\.)tracker\.
-(^|\.)metrics?\.
-(^|\.)pixel\.
-(^|\.)doubleclick\.
-(^|\.)googlesyndication\.
+# --- Broad catch-all (AGGRESSIVE: may false-positive on legit "promo"/"sponsor"
+#     subdomains; delete this line if something breaks) ---
+(ads?|advert(s|isement)?|banner|sponsor|promo|track(ing)?)[-_.]?(server|serve|click|pixel|beacon)?\.(?:[a-z0-9-]+\.)*[a-z]{2,}
+
+# --- Google / YouTube ad & tracking ---
+(\.|^)doubleclick\.net$
+(\.|^)googlesyndication\.com$
+(\.|^)googleadservices\.com$
+(\.|^)googletagservices\.com$
+(\.|^)google-analytics\.com$
+(\.|^)adservice\.google\.com$
+(\.|^)2mdn\.net$
+^(.+[_.-])?ads?[0-9]*\.youtube\.com$
+^(.+\.)?imasdk\.googleapis\.com$
+
+# --- Amazon ---
+(\.|^)amazon-adsystem\.com$
+
+# --- Ad exchanges / networks ---
+(\.|^)adnxs\.com$
+(\.|^)pubmatic\.com$
+(\.|^)rubiconproject\.com$
+(\.|^)openx\.net$
+(\.|^)casalemedia\.com$
+(\.|^)smartadserver\.com$
+(\.|^)criteo\.com$
+(\.|^)criteo\.net$
+(\.|^)taboola\.com$
+(\.|^)outbrain\.com$
+(\.|^)adform\.net$
+(\.|^)bidswitch\.net$
+(\.|^)mathtag\.com$
+(\.|^)yieldmo\.com$
+(\.|^)sharethrough\.com$
+(\.|^)33across\.com$
+(\.|^)adroll\.com$
+(\.|^)adsrvr\.org$
+(\.|^)adsymptotic\.com$
+(\.|^)serving-sys\.com$
+(\.|^)zedo\.com$
+(\.|^)innovid\.com$
+(\.|^)flashtalking\.com$
+(\.|^)springserve\.com$
+(\.|^)spotxchange\.com$
+(\.|^)spotx\.tv$
+(\.|^)fwmrm\.net$
+(\.|^)tremorhub\.com$
+(\.|^)teads\.tv$
+(\.|^)adcolony\.com$
+
+# --- Measurement / verification / analytics ---
+(\.|^)scorecardresearch\.com$
+(\.|^)quantserve\.com$
+(\.|^)moatads\.com$
+(\.|^)doubleverify\.com$
+(\.|^)adsafeprotected\.com$
+
+# --- Smart TV ads (LG / Samsung / Unity) ---
+(\.|^)lgsmartad\.com$
+(\.|^)ad\.lgappstv\.com$
+(\.|^)samsungads\.com$
+(\.|^)unityads\.unity3d\.com$
+^lgad\.cjpowercast\.com$
