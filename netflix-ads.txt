@@ -1,0 +1,22 @@
+# Netflix ads blocklist (Pi-hole adlist format: one domain per line)
+# Add the RAW url of this file under Pi-hole > Adlists.
+#
+# HONEST NOTE: Netflix's ad-supported tier serves ads through Microsoft (Xandr).
+# Blocking these ad/measurement endpoints may trip ad-tier "verification" and in
+# some cases pause playback. Entries below are Netflix telemetry + the ad/
+# measurement partners used by the ad tier. Core streaming domains are NOT here.
+
+# Netflix telemetry / tracking
+ichnaea.netflix.com
+customerevents.netflix.com
+ichnaea-web.netflix.com
+
+# Ad-tier ad & measurement partners (Microsoft/Xandr, IAS, DoubleVerify, Nielsen)
+ib.adnxs.com
+secure.adnxs.com
+pixel.adsafeprotected.com
+static.adsafeprotected.com
+cdn.doubleverify.com
+tps.doubleverify.com
+secure-us.imrworldwide.com
+secure-gl.imrworldwide.com

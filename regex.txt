@@ -1,0 +1,17 @@
+# Pi-hole REGEX filters (NOT an adlist).
+# Paste these under Group Management > Domains > Add a new regex filter.
+# One per line. Test before trusting — regex blocks are broad by design.
+
+# Block common ad/tracking subdomain prefixes across all domains
+(^|\.)ads?[0-9]*\.
+(^|\.)adserver\.
+(^|\.)adservice\.
+(^|\.)advert(s|ising)?\.
+(^|\.)analytics?\.
+(^|\.)telemetry\.
+(^|\.)tracking?\.
+(^|\.)tracker\.
+(^|\.)metrics?\.
+(^|\.)pixel\.
+(^|\.)doubleclick\.
+(^|\.)googlesyndication\.

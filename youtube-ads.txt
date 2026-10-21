@@ -1,0 +1,20 @@
+# YouTube ads blocklist (Pi-hole adlist format: one domain per line)
+# Add the RAW url of this file under Pi-hole > Adlists.
+#
+# HONEST NOTE: Pi-hole CANNOT fully block YouTube video ads. Those ads are
+# served from the SAME domains as the videos (*.googlevideo.com), so blocking
+# them breaks playback. These entries kill YouTube's ad/tracking endpoints and
+# display ads, not the in-stream video ads. For real in-stream blocking use a
+# browser extension (uBlock Origin) or SponsorBlock.
+
+googleads.g.doubleclick.net
+static.doubleclick.net
+pubads.g.doubleclick.net
+ad.doubleclick.net
+pagead2.googlesyndication.com
+www.googleadservices.com
+googleadservices.com
+ads.youtube.com
+youtube.ue.ads.cdn.com
+s0.2mdn.net
+ad.mail.ru
