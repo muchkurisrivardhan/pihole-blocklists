@@ -14,7 +14,7 @@ securepubads.g.doubleclick.net
 ad.doubleclick.net
 pagead2.googlesyndication.com
 www.googleadservices.com
-googleadservices.com
+
 
 youtube.ue.ads.cdn.com
 s0.2mdn.net
