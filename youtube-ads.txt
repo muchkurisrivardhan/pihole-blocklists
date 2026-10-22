@@ -15,7 +15,7 @@ ad.doubleclick.net
 pagead2.googlesyndication.com
 www.googleadservices.com
 googleadservices.com
-ads.youtube.com
+
 youtube.ue.ads.cdn.com
 s0.2mdn.net
 ad.mail.ru
